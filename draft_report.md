@@ -1,10 +1,9 @@
 # Realm of the Mad God (RotMG) Bot
 
-andljkadjkadj.kabdja
+
 
 ## State Space Description
 
-andkjadkjahldkjaldkjahdl
 
 ### Natural Language Description
 
@@ -27,7 +26,7 @@ By representing the current situation as a state, the bot can evaluate actions a
 
 ### Mathematical Description
 
-andm,andadabdaajdlkjahda    
+Markov Decision Processes (MDP) are used to model the environment and used for navigation in conjunction with A*/Dijkstra's. Q-learning is used for combat and decision-making under uncertainty so that the bot can learn to adapt to enemy behaviors and boss patterns. 
 
 #### Markov Decision Processes (MDP)
 
@@ -50,11 +49,37 @@ Each state $s \in S$ in the decision process encodes the following:
 * Action History $a_{history} = \{a_1,a_2,a_3,...,a_n\}$
 
 Given the state variables, an MDP for the RotMG bot could be formalized as follows:
-$$
-{S} = \{p_{bot}, h_{bot}, m_{bot}, p_{enemy}, h_{enemy}, \theta_{bot}, {map}, p_{dng}, a_{history}\}
-$$
+<p align="center">
+  <img src="assets/img/img2.svg" alt="img2 equation" />
+</p>
 
 The action space $A$ of the bot would include legal actions $a$ the bot can take:
-$$
-{A} = \{{NORTH},{EAST},{SOUTH},{WEST},{STOP},{ABILITY}, \theta_{rot}, {NEXUS}, {POT_{(1,2)}}\}
-$$
+<p align="center">
+  <img src="assets/img/img3.svg" alt="img3 equation" />
+</p>
+
+The transition function $P(s'|s,a)$ can describe the new position of the bot after moving, the updated health after an attack, etc.
+The reward function $R(s,a)$ could include rewards for successfully evading an attack, killing enemy, or looting item.
+
+#### Q-learning
+
+In Q-learning, the Q-value $(s_t,a_t)$ will be updated based on the bot's experience. The current state can be formalized the same as MDP:
+<p align="center">
+  <img src="assets/img/img2.svg" alt="img2 equation" />
+</p>
+
+The action space $A$ is also the same as the action space in MDP:
+<p align="center">
+  <img src="assets/img/img3.svg" alt="img3 equation" />
+</p>
+
+The reward value would update based on the outcome of an action $a_t$. For example:
+* $r_{t + 1} = +1$ for killing an enemy
+* $r_{t + 1} = -1$ for taking damage
+
+The Q-value update rule would be as follows:
+<p align="center">
+  <img src="assets/img/img4.svg" alt="img4 equation" />
+</p>
+The bot uses the maximum Q-value for the next state and updates its Q-value accordingly to improve future decisions. For exmaple, if the bot's health $h_{bot}$ drops below a threshold after an enemy attack, it may update the Q-values for actions like "dodge" or "retreat" more favorably.
+
