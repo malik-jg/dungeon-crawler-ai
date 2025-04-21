@@ -32,9 +32,9 @@ andm,andadabdaajdlkjahda
 #### Markov Decision Processes (MDP)
 
 We can model the decision-making process for the RotMG as an MDP:
-$$
-M = (S, A, P, R, \gamma)
-$$
+<p align="center">
+  <img src="assets/img/img1.svg" alt="img1 equation" />
+</p>
 
 Each state $s \in S$ in the decision process encodes the following:
 * Bot's position $p_{bot} = (x_{bot},y_{bot})$
