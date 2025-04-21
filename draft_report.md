@@ -42,11 +42,11 @@ Each state $s \in S$ in the decision process encodes the following:
 * Bot's mana $m_{bot} \in [0,M_{max}]$
 * Bot's inventory ${inv}_{bot} = \{item_1, item_2, item_3, ...\}$
 * Bot's stats ${stats} = \{{ATT},{DEF},{SPD},{DEX},{VIT},{WIS}\}$
-* Nearby enemies positions $p_{enemy} = \{(x_{enemy\_1},y_{enemy\_1}), (x_{enemy\_2},y_{enemy\_2}),((x_{enemy\_3},y_{enemy\_3})), ...\}$
+* Nearby enemies positions $p_{enemy} = \{(x_{enemy\_1},y_{enemy\_1}), (x_{enemy\_2},y_{enemy\_2}),(x_{enemy\_3},y_{enemy\_3}), ...\}$
 * Nearby enemy health $h_{enemy} \in [0,H_{enemy\_max}]$
 * Bot's Orientation $\theta_{bot} \in [0, 2\pi)$
 * Environment State ${map} = \{(x_{obs},y_{obs})\}$  
-* Position of observable dungeons $p_{dgn} = \{(x_{dgn\_1},y_{dgn\_1}), (x_{dgn\_2},y_{dgn\_2}),((x_{dgn\_3},y_{dgn\_3})), ...\}$
+* Position of observable dungeons $p_{dgn} = \{(x_{dgn\_1},y_{dgn\_1}), (x_{dgn\_2},y_{dgn\_2}),(x_{dgn\_3},y_{dgn\_3}), ...\}$
 * Action History $a_{history} = \{a_1,a_2,a_3,...,a_n\}$
 
 Given the state variables, an MDP for the RotMG bot could be formalized as follows:
